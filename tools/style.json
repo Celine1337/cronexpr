@@ -1,0 +1,46 @@
+{
+  "name": "cronexpr",
+  "kicker": "cron expression cli",
+  "subtitle": "Explain, validate and preview 5-field cron.",
+  "avatar": "gear",
+  "hero_pills": [
+    ["pin", "Python 3.9+ · stdlib only"],
+    ["code", "Core: 5-field cron"]
+  ],
+  "pills": [
+    {"id": "ru", "icon": "book", "label": "README RU"},
+    {"id": "en", "icon": "book", "label": "README EN"},
+    {"id": "release", "icon": "tag", "label": "Releases"},
+    {"id": "ci", "icon": "check", "label": "CI"},
+    {"id": "license", "icon": "doc", "label": "MIT"}
+  ],
+  "sections": {
+    "en": [
+      ["about", "About", "doc"],
+      ["features", "Features", "star"],
+      ["checks", "Checks", "check"],
+      ["stack", "Tech stack", "code"],
+      ["quick", "Quick start", "play"],
+      ["shots", "Screenshots", "image"],
+      ["tests", "Tests", "check"]
+    ],
+    "ru": [
+      ["about", "О проекте", "doc"],
+      ["features", "Возможности", "star"],
+      ["checks", "Проверки", "check"],
+      ["stack", "Технологии", "code"],
+      ["quick", "Быстрый старт", "play"],
+      ["shots", "Скриншоты", "image"],
+      ["tests", "Тесты", "check"]
+    ]
+  },
+  "chips": {
+    "MAIN": ["Python 3.9+", "argparse", "datetime", "unittest"],
+    "TOOLS": ["GitHub Actions", "Pillow (docs)", "JSON"]
+  },
+  "stats": [
+    ["42", "tests"],
+    ["3", "OSes in CI"],
+    ["v1.0.0", "latest release"]
+  ]
+}

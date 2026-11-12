@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.9", "3.12"]
+        exclude:
+          # ubuntu-latest (26.04) has no setup-python builds for 3.9
+          - os: ubuntu-latest
+            python: "3.9"
+        include:
+          - os: ubuntu-24.04
+            python: "3.9"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: CLI smoke test
+        shell: bash
+        run: |
+          python cronexpr.py --version
+          python cronexpr.py --no-color validate "*/15 9-17 * * MON-FRI"
+          python cronexpr.py --no-color explain "0 9 * * MON"
+          python cronexpr.py --no-color next "*/15 9-17 * * MON-FRI" --count 3 --from "2026-11-11 08:50"
+          python cronexpr.py --no-color validate "61 * * * *" || test $? -eq 1
